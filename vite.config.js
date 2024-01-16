@@ -8,12 +8,7 @@ import postcss from './postcss.config.cjs'
 export default defineConfig({
     build: { chunkSizeWarningLimit: 1600, },
     server: {
-        port: 5173,
-        https: {
-            key: '/etc/ssl/private/wildcard_key.key',
-            cert: '/etc/ssl/certs/wildcard_cert.cer',
-        },
-        host: 'apps.uis.edu',
+        port: 5173
     },
     css: {
         postcss,

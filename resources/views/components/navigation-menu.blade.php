@@ -84,7 +84,7 @@
                             <x-dropdown-link href="{{ url('/') }}/comments/create">
                                 {{ __('Feedback') }}
                             </x-dropdown-link>
-                            <x-dropdown-link href="{{ url('/') }}/shibboleth-logout">
+                            <x-dropdown-link href="{{ url('/') }}/logout">
                                 {{ __('Logout') }}
                             </x-dropdown-link>
                         </x-slot>
@@ -117,17 +117,6 @@
                     <x-responsive-nav-link href="{{ route('user.index') }}" :active="request()->routeIs('user.index')">
                         {{ __('Users') }}
                     </x-responsive-nav-link>
-                    @if(auth()->user()->isImpersonating())
-                        <x-responsive-nav-link href="{{ route('user.impersonatestop') }}" :active="request()->routeIs('user.impersonatestop')">
-                            {{ __('Stop Impersonation') }}
-                        </x-responsive-nav-link>
-                    @endif
-                    <x-responsive-nav-link href="{{ url('/') }}/help">
-                        {{ __('Help') }}
-                    </x-responsive-nav-link>
-                    <x-responsive-nav-link href="{{ url('/') }}/feedback">
-                        {{ __('Feedback') }}
-                    </x-responsive-nav-link>
                 @endcan
             @endif
         </div>
@@ -143,7 +132,7 @@
                 </div>
 
                 <div class="mt-3 space-y-1">
-                    <x-responsive-nav-link href="{{ url('/') }}/shibboleth-logout">
+                    <x-responsive-nav-link href="{{ url('/') }}/logout">
                         {{ __('Logout') }}
                     </x-responsive-nav-link>
                 </div>

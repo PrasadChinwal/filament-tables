@@ -34,6 +34,4 @@ app.component('user-index', defineAsyncComponent(() => import('./Pages/users/Ind
 app.component('role-index', defineAsyncComponent(() => import('./Pages/roles/Index.vue')));
 app.component('feedback-index', defineAsyncComponent(() => import('./Pages/feedback/Index.vue')));
 
-app.component('schedule', defineAsyncComponent(() => import('./Pages/schedules/Index.vue')));
-
 app.use(vuetify).mount("#app");

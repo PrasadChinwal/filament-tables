@@ -19,7 +19,8 @@ class CreateUsersTable extends Migration
             $table->string('password');
             $table->string('first_name')->nullable();
             $table->string('last_name')->nullable();
-            $table->string('uin', 9)->nullable();
+            $table->string('uin', 9);
+            $table->string('netid', 9);
             $table->rememberToken();
             $table->timestamps();
         });

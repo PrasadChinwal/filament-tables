@@ -6,19 +6,14 @@
     "license": "MIT",
     "require": {
         "php": "^8.2",
-        "arcanedev/log-viewer": "^10.0",
-        "directorytree/ldaprecord-laravel": "^3.1",
         "doctrine/dbal": "^3.0",
         "filament/filament": "^3.2",
-        "graylog2/gelf-php": "^2.0",
         "guzzlehttp/guzzle": "^7.8",
         "laravel/framework": "^10.0",
         "laravel/sanctum": "^3.3",
         "laravel/tinker": "^2.8",
         "predis/predis": "^2.2",
-        "spatie/laravel-permission": "^6.1",
-        "uisits/laravel-oidc": "^10.0",
-        "yajra/laravel-oci8": "^10.3"
+        "spatie/laravel-permission": "^6.1"
     },
     "require-dev": {
         "fakerphp/faker": "^1.9.1",

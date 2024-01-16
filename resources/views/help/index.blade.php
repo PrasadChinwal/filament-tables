@@ -1,18 +1,16 @@
-@extends('main')
-@section('title', 'Help')
-@section('content')
+<x-app-layout>
 
-<p class="text-center" ></p>
+    <x-slot name="header">
+        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+            {{ __('Help') }}
+        </h2>
+    </x-slot>
 
-<ul class="list-group">
-
-<li class="list-group-item justify-content-between">
-Click Home to go to the main page.
-</li>
-
-</ul>
-
-<p class="text-center">For assistance, please contact ITS Client Services at    <a  href="mailto:techsupport@uis.edu?subject={{ env('APP_NAME') }} Help" >techsupport@uis.edu</a>  </p>
-<div class="col-xs-12" style="height:450px;"></div>
-
-@stop
+    <div class="py-12">
+        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+            <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
+                Help
+            </div>
+        </div>
+    </div>
+</x-app-layout>
