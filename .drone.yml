@@ -1,0 +1,28 @@
+pipeline:
+  build:
+    image: uis-its/centos7-sp-php-ora-sqlsrv-laravel-prod:latest
+    environment:
+        - APPLICATION_NAME=${DRONE_REPO_NAME}
+    commands:
+        - export APPLICATION_NAME=${DRONE_REPO_NAME}
+        - php -v
+        - composer -v
+        - /usr/bin/scp -o StrictHostKeyChecking=no root@172.17.0.1:/docker/env_files/${DRONE_REPO_NAME}/test/.env /var/www/laravel/  # Needs it otherwise db connection on next step fails
+        - /root/clear_cache.sh
+        - /usr/bin/php71 /var/www/laravel/artisan key:generate
+        - sleep 5
+        - /usr/bin/php71 /var/www/laravel/artisan migrate
+        - /usr/bin/phantomjs --version
+        
+  test:
+    image: uis-its/centos7-sp-php-ora-sqlsrv-laravel-prod:latest
+    commands:
+        - \cp -RP /drone/src/github.com/uisits/${DRONE_REPO_NAME}/* /var/www/laravel/ 
+        - /usr/bin/scp -o StrictHostKeyChecking=no root@172.17.0.1:/docker/env_files/${DRONE_REPO_NAME}/test/.env /var/www/laravel/  # Needs it otherwise db connection on next step fails
+        - /root/clear_cache.sh
+        - sleep 5
+        - /var/www/laravel/vendor/bin/phpunit --bootstrap /var/www/laravel/vendor/autoload.php /var/www/laravel/tests/Feature/ExampleTest.php  -vvv
+        - /usr/bin/phantomjs --webdriver=127.0.0.1:4444 &  # Start PhantomJS driver
+        - sleep 5 # Give PhantomJS time to start
+        - cd /var/www/laravel
+        - /usr/bin/php71 /var/www/laravel/artisan dusk
